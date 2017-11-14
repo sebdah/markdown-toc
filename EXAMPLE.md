@@ -13,3 +13,4 @@ Header 2
 # Header with {curly brackets}
 # Header with 'single quotes'
 # Header with "double quotes"
+[comment]: <> (This is a comment, it will not be included)
