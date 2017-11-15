@@ -48,7 +48,7 @@ func Build(d []byte, header string, addHeader bool) ([]string, error) {
 		return []string{}, err
 	}
 
-	toc = append(toc, "<!-- ToC end -->\n")
+	toc = append(toc, "<!-- ToC end -->")
 
 	return toc, nil
 }
