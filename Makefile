@@ -43,6 +43,10 @@ endif
 test:
 	go test -v ./...
 
+.PHONY: update-toc
+update-toc:
+	@go run main.go --replace --inline --skip-headers=1 README.md
+
 .PHONY: version
 version:
 	@echo $(VERSION)
