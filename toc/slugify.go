@@ -6,11 +6,10 @@ import "strings"
 // rules here are adapted to how GitHub is creating slugs from the headers.
 func slugify(s string) string {
 	droppedChars := []string{
-		"\"",
-		"'",
-		"`",
-		".",
-		",",
+		"\"", "'", "`", ".",
+		"!", ",", "~", "&",
+		"%", "^", "*", "#",
+		"@", "|",
 		"(", ")",
 		"{", "}",
 		"[", "]",
