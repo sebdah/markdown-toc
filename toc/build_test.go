@@ -76,6 +76,27 @@ Some content
 				"<!-- ToC end -->",
 			},
 		},
+		"success - Repeated headers": {
+			data: []byte(`
+Header 1
+========
+Content
+
+# Header 1
+Some content
+`),
+			header:      "# Table of Contents",
+			depth:       0,
+			skipHeaders: 0,
+			addHeader:   true,
+			expectedToC: []string{
+				"<!-- ToC start -->",
+				"# Table of Contents\n",
+				"1. [Header 1](#header-1)",
+				"1. [Header 1](#header-1-1)",
+				"<!-- ToC end -->",
+			},
+		},
 		"skipping 3 headers": {
 			data: []byte(`
 Header 1
