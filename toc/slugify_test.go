@@ -11,13 +11,16 @@ func TestSlugify(t *testing.T) {
 		in       string
 		expected string
 	}{
-		"applies lower case":    {in: "MysTrInghEre", expected: "mystringhere"},
-		"replace space with -":  {in: "Some ex ample", expected: "some-ex-ample"},
-		"replace () with space": {in: "Header (something)", expected: "header-something"},
-		"replace [] with space": {in: "Header [something]", expected: "header-something"},
-		"replace {} with space": {in: "Header {something}", expected: "header-something"},
-		"replace \" with space": {in: "Header \"something\"", expected: "header-something"},
-		"replace ' with space":  {in: "Header 'something'", expected: "header-something"},
+		"applies lower case":   {in: "MysTrInghEre", expected: "mystringhere"},
+		"replace space with -": {in: "Some ex ample", expected: "some-ex-ample"},
+		"drop ()":              {in: "Header (something)", expected: "header-something"},
+		"drop []":              {in: "Header [something]", expected: "header-something"},
+		"drop {}":              {in: "Header {something}", expected: "header-something"},
+		"drop \"":              {in: "Header \"something\"", expected: "header-something"},
+		"drop '":               {in: "Header 'something'", expected: "header-something"},
+		"drop `":               {in: "Header `something`", expected: "header-something"},
+		"drop .":               {in: "Header .something.", expected: "header-something"},
+		"drop ,":               {in: "Header ,something,", expected: "header-something"},
 	}
 
 	for name, testCase := range testCases {
