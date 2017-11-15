@@ -19,7 +19,9 @@ In short the features of `markdown-toc` are:
 - Cross platform (OS X, Linux, Windows)
 - Replacement of an existing ToC
   - The new file can be written to `stdout` or overwritten on disk
-- Configurable header
+- Able to skip `n` number of initial headers
+- Configurable depth of headers to include
+- Customizable header for the table of contents
 
 **Please star the project if you like it!**
 
@@ -80,7 +82,31 @@ Output:
     - [License](#license)
     <!-- ToC end -->
 
+## Controlling depth of headers
+
+Using the `--depth` flag you can control how many labels of headers to include
+in the output. If the `--depth` is set to `1`, only level 1 headers are
+included. Set this value to `0` (default) to include any depth of headers.
+
+Command:
+
+    markdown-toc --depth 1 README.md
+
+Output:
+
+    <!-- ToC start -->
+    # Table of Contents
+
+    - [`markdown-toc` - Generate your Table of Contents](#`markdown-toc`---generate-your-table-of-contents)
+    - [Example usage](#example-usage)
+    - [License](#license)
+    <!-- ToC end -->
+
 ## Set a custom header
+
+By default we print a header like `# Table of Contents` above the table of
+contents. You can change the header to suit your project using the `--header`
+flag.
 
 Command:
 
@@ -98,6 +124,9 @@ Output:
     <!-- ToC end -->
 
 ## Render the ToC without a header
+
+By default we print a header like `# Table of Contents` above the table of
+contents. You can remove the header by providing `--no-header` to the command.
 
 Command:
 

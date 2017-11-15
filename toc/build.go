@@ -15,7 +15,7 @@ var (
 )
 
 // Build is returning a ToC based on the input markdown.
-func Build(d []byte, header string, skipHeaders int, addHeader bool) ([]string, error) {
+func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]string, error) {
 	toc := []string{
 		"<!-- ToC start -->",
 	}
@@ -30,6 +30,10 @@ func Build(d []byte, header string, skipHeaders int, addHeader bool) ([]string, 
 		switch {
 		case rHashHeader.Match(s.Bytes()):
 			m := rHashHeader.FindStringSubmatch(s.Text())
+			if depth > 0 && len(m[1]) > depth {
+				continue
+			}
+
 			indent := len(m[1]) - 1
 			title := m[2]
 
@@ -49,6 +53,10 @@ func Build(d []byte, header string, skipHeaders int, addHeader bool) ([]string, 
 			toc = append(toc, fmt.Sprintf("- [%s](#%s)", previousLine, slugify(previousLine)))
 
 		case rUnderscoreHeader2.Match(s.Bytes()):
+			if depth > 0 && depth < 2 {
+				continue
+			}
+
 			if skipHeaders > 0 {
 				skipHeaders--
 				continue
