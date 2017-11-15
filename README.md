@@ -1,0 +1,77 @@
+# markdown-toc - Generate your Table of Contents
+
+`markdown-toc` is a small application written in Go that helps you generate a
+Table of Contents (ToC) for your Markdown file. There are already a number of
+scripts etc doing this, but I failed to find one that suited my needs.
+
+In short the features of `markdown-toc` are:
+
+- Cross platform (OS X, Linux, Windows)
+- Replacement of an existing ToC
+  - The new file can be written to `stdout` or overwritten on disk
+- Configurable header
+
+**Please star the project if you like it!**
+
+# Example usage
+
+## Generating a ToC to `stdout`
+
+Command:
+
+    markdown-toc README.md
+
+Output:
+
+    <!-- ToC start -->
+    # Table of Contents
+
+    - [`markdown-toc` - Generate your Table of Contents](#`markdown-toc`---generate-your-table-of-contents)
+    - [Example usage](#example-usage)
+      - [Generating a ToC to `stdout`](#generating-a-toc-to-`stdout`)
+    - [License](#license)
+    <!-- ToC end -->
+
+## Set a custom header
+
+Command:
+
+    markdown-toc --header "# ToC" README.md
+
+Output:
+
+    <!-- ToC start -->
+    # ToC
+
+    - [`markdown-toc` - Generate your Table of Contents](#`markdown-toc`---generate-your-table-of-contents)
+    - [Example usage](#example-usage)
+      - [Generating a ToC to `stdout`](#generating-a-toc-to-`stdout`)
+    - [License](#license)
+    <!-- ToC end -->
+
+## Print the full Markdown file, not only the ToC
+
+    markdown-toc --replace README.md
+
+This will print the full Markdown of `README.md` and a table of contents section
+will be injected into the Markdown based on the following rules:
+
+- If no ToC was found, the ToC will be injected on top of the file
+- If a section starting with `<!-- ToC start -->` and ending with
+  `<!-- ToC end -->` is found, it will be replaced with the new ToC.
+
+## Inject the ToC into a file on disk
+
+    markdown-toc --replace --inline README.md
+
+This will overwrite the `README.md` file on disk with the full Markdown of
+`README.md` and a table of contents section will be injected into the Markdown
+based on the following rules:
+
+- If no ToC was found, the ToC will be injected on top of the file
+- If a section starting with `<!-- ToC start -->` and ending with
+  `<!-- ToC end -->` is found, it will be replaced with the new ToC.
+
+# License
+
+MIT license
