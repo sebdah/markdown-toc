@@ -46,6 +46,7 @@ In short the features of `markdown-toc` are:
   - [Running the test suite](#running-the-test-suite)
   - [Build locally with build flags](#build-locally-with-build-flags)
 - [Releasing new versions](#releasing-new-versions)
+- [Contributors](#contributors)
 - [License](#license)
 <!-- ToC end -->
 
@@ -213,6 +214,10 @@ There are many ways to help out with this project. Here are a few:
 
 From the `master` branch run `make release`. You will need to have access to
 pushing to the GitHub project as well as Docker Hub.
+
+# Contributors
+
+- [Sebastian Dahlgren](https://twitter.com/sebdah) (maintainer)
 
 # License
 
