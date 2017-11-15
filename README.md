@@ -30,7 +30,6 @@ In short the features of `markdown-toc` are:
 <!-- ToC start -->
 # Table of Contents
 
-- [markdown-toc](#markdown-toc)
 - [Table of Contents](#table-of-contents)
 - [Installation](#installation)
   - [Running it in Docker](#running-it-in-docker)
