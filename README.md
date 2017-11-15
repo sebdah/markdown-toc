@@ -1,4 +1,8 @@
-# markdown-toc - Generate your Table of Contents
+# markdown-toc
+
+<p align="center">
+    <strong>Generating your Markdown Table of Contents</strong>
+</p>
 
 <p align="center">
     <a href="https://travis-ci.org/sebdah/markdown-toc"><img src="https://img.shields.io/travis/sebdah/markdown-toc.svg" /></a>
