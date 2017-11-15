@@ -1,5 +1,11 @@
 # markdown-toc - Generate your Table of Contents
 
+<p align="center">
+    <a href="https://travis-ci.org/sebdah/markdown-toc"><img src="https://img.shields.io/travis/sebdah/markdown-toc.svg" /></a>
+    <a href="https://github.com/sebdah/markdown-toc/issues"><img src="https://img.shields.io/github/issues/sebdah/markdown-toc.svg" /></a>
+    <a href="https://github.com/sebdah/markdown-toc/blob/master/LICENSE"><img src="https://img.shields.io/github/license/sebdah/markdown-toc.svg" /></a>
+</p>
+
 `markdown-toc` is a small application written in Go that helps you generate a
 Table of Contents (ToC) for your Markdown file. There are already a number of
 scripts etc doing this, but I failed to find one that suited my needs.
