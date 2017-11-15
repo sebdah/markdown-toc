@@ -6,6 +6,7 @@
 
 <p align="center">
     <a href="https://travis-ci.org/sebdah/markdown-toc"><img src="https://img.shields.io/travis/sebdah/markdown-toc.svg" /></a>
+    <a href="https://hub.docker.com/r/sebdah/markdown-toc/"><img src="https://img.shields.io/badge/docker-latest-blue.svg" /></a>
     <a href="https://github.com/sebdah/markdown-toc/issues"><img src="https://img.shields.io/github/issues/sebdah/markdown-toc.svg" /></a>
     <a href="https://github.com/sebdah/markdown-toc/blob/master/LICENSE"><img src="https://img.shields.io/github/license/sebdah/markdown-toc.svg" /></a>
 </p>
