@@ -54,6 +54,10 @@ Some content
 #### Header 6
 
 Some content
+
+#### Header 7
+
+Some content
 `),
 			header:      "# Table of Contents",
 			depth:       0,
@@ -62,12 +66,13 @@ Some content
 			expectedToC: []string{
 				"<!-- ToC start -->",
 				"# Table of Contents\n",
-				"- [Header 1](#header-1)",
-				"  - [Header 2](#header-2)",
-				"- [Header 3](#header-3)",
-				"  - [Header 4](#header-4)",
-				"    - [Header 5](#header-5)",
-				"      - [Header 6](#header-6)",
+				"1. [Header 1](#header-1)",
+				"  1. [Header 2](#header-2)",
+				"1. [Header 3](#header-3)",
+				"  1. [Header 4](#header-4)",
+				"    1. [Header 5](#header-5)",
+				"      1. [Header 6](#header-6)",
+				"      1. [Header 7](#header-7)",
 				"<!-- ToC end -->",
 			},
 		},
@@ -106,9 +111,9 @@ Some content
 			expectedToC: []string{
 				"<!-- ToC start -->",
 				"# Table of Contents\n",
-				"  - [Header 4](#header-4)",
-				"    - [Header 5](#header-5)",
-				"      - [Header 6](#header-6)",
+				"  1. [Header 4](#header-4)",
+				"    1. [Header 5](#header-5)",
+				"      1. [Header 6](#header-6)",
 				"<!-- ToC end -->",
 			},
 		},
@@ -147,8 +152,8 @@ Some content
 			expectedToC: []string{
 				"<!-- ToC start -->",
 				"# Table of Contents\n",
-				"- [Header 1](#header-1)",
-				"- [Header 3](#header-3)",
+				"1. [Header 1](#header-1)",
+				"1. [Header 3](#header-3)",
 				"<!-- ToC end -->",
 			},
 		},
@@ -187,10 +192,10 @@ Some content
 			expectedToC: []string{
 				"<!-- ToC start -->",
 				"# Table of Contents\n",
-				"- [Header 1](#header-1)",
-				"  - [Header 2](#header-2)",
-				"- [Header 3](#header-3)",
-				"  - [Header 4](#header-4)",
+				"1. [Header 1](#header-1)",
+				"  1. [Header 2](#header-2)",
+				"1. [Header 3](#header-3)",
+				"  1. [Header 4](#header-4)",
 				"<!-- ToC end -->",
 			},
 		},
