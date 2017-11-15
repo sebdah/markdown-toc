@@ -11,6 +11,11 @@ import (
 )
 
 var (
+	// depth indicates how many levels of headers should be included in the ToC.
+	//
+	// If 0, all headers are included.
+	depth int
+
 	// header is the string injected as a header for the table of contents.
 	header string
 
@@ -53,7 +58,7 @@ var RootCmd = &cobra.Command{
 			return err
 		}
 
-		t, err := toc.Build(d, header, skipHeaders, !noHeader)
+		t, err := toc.Build(d, header, depth, skipHeaders, !noHeader)
 		if err != nil {
 			return err
 		}
@@ -86,6 +91,7 @@ var RootCmd = &cobra.Command{
 }
 
 func init() {
+	RootCmd.Flags().IntVar(&depth, "depth", 0, "Depth of headers to include. Set to 0 for all headers")
 	RootCmd.Flags().StringVar(&header, "header", "# Table of Contents", "Text to use for the header for the ToC")
 	RootCmd.Flags().BoolVar(&noHeader, "no-header", false, "If this is set there will be no header for the ToC")
 	RootCmd.Flags().IntVar(&skipHeaders, "skip-headers", 0, "Number of headers to skip. Useful if you don't want e.g. the first header to be included in the ToC")
