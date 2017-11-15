@@ -14,9 +14,9 @@ var (
 	// header is the string injected as a header for the table of contents.
 	header string
 
-	// skipHeader is indicating whether or not a header should be injected in
-	// the table of contents.
-	skipHeader bool
+	// noHeader is indicating whether or not a header should be injected in the
+	// table of contents.
+	noHeader bool
 
 	// replaceToC is indicating whether we should replace the table of contents
 	// in the input file. This assumes that there are two tags indicating where
@@ -44,7 +44,7 @@ var RootCmd = &cobra.Command{
 			return err
 		}
 
-		t, err := toc.Build(d, header, !skipHeader)
+		t, err := toc.Build(d, header, !noHeader)
 		if err != nil {
 			return err
 		}
@@ -78,7 +78,7 @@ var RootCmd = &cobra.Command{
 
 func init() {
 	RootCmd.Flags().StringVar(&header, "header", "# Table of Contents", "Text to use for the header for the ToC")
-	RootCmd.Flags().BoolVar(&skipHeader, "skip-header", false, "If this is set there will be no header for the ToC")
+	RootCmd.Flags().BoolVar(&noHeader, "no-header", false, "If this is set there will be no header for the ToC")
 	RootCmd.Flags().BoolVar(&replaceToC, "replace", false, "If the replace flag is set the full markdown will be returned and any existing ToC replaced")
 	RootCmd.Flags().BoolVar(&inline, "inline", false, "Overwrite the input file with the output from this command. Should be used together with --replace")
 }
