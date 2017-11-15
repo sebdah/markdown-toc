@@ -42,7 +42,7 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 				continue
 			}
 
-			toc = append(toc, fmt.Sprintf("%s- [%s](#%s)", strings.Repeat("  ", indent), title, slugify(title)))
+			toc = append(toc, fmt.Sprintf("%s1. [%s](#%s)", strings.Repeat("  ", indent), title, slugify(title)))
 
 		case rUnderscoreHeader1.Match(s.Bytes()):
 			if skipHeaders > 0 {
@@ -50,7 +50,7 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 				continue
 			}
 
-			toc = append(toc, fmt.Sprintf("- [%s](#%s)", previousLine, slugify(previousLine)))
+			toc = append(toc, fmt.Sprintf("1. [%s](#%s)", previousLine, slugify(previousLine)))
 
 		case rUnderscoreHeader2.Match(s.Bytes()):
 			if depth > 0 && depth < 2 {
@@ -62,7 +62,7 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 				continue
 			}
 
-			toc = append(toc, fmt.Sprintf("  - [%s](#%s)", previousLine, slugify(previousLine)))
+			toc = append(toc, fmt.Sprintf("  1. [%s](#%s)", previousLine, slugify(previousLine)))
 		}
 
 		previousLine = s.Text()
