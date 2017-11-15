@@ -33,9 +33,10 @@ In short the features of `markdown-toc` are:
   - [Set a custom header](#set-a-custom-header)
   - [Print the full Markdown file, not only the ToC](#print-the-full-markdown-file-not-only-the-toc)
   - [Inject the ToC into a file on disk](#inject-the-toc-into-a-file-on-disk)
-- [Helping out!](#helping-out!)
+- [Helping out!](#helping-out)
 - [License](#license)
 <!-- ToC end -->
+
 
 
 
