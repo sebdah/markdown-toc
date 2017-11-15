@@ -97,6 +97,21 @@ Output:
     - [License](#license)
     <!-- ToC end -->
 
+## Render the ToC without a header
+
+Command:
+
+    markdown-toc --no-header README.md
+
+Output:
+
+    <!-- ToC start -->
+    - [`markdown-toc` - Generate your Table of Contents](#`markdown-toc`---generate-your-table-of-contents)
+    - [Example usage](#example-usage)
+      - [Generating a ToC to `stdout`](#generating-a-toc-to-`stdout`)
+    - [License](#license)
+    <!-- ToC end -->
+
 ## Print the full Markdown file, not only the ToC
 
     markdown-toc --replace README.md
