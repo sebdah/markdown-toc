@@ -20,7 +20,15 @@ func TestSlugify(t *testing.T) {
 		"drop '":               {in: "Header 'something'", expected: "header-something"},
 		"drop `":               {in: "Header `something`", expected: "header-something"},
 		"drop .":               {in: "Header .something.", expected: "header-something"},
-		"drop ,":               {in: "Header ,something,", expected: "header-something"},
+		"drop !":               {in: "Header !something!", expected: "header-something"},
+		"drop ~":               {in: "Header ~something~", expected: "header-something"},
+		"drop &":               {in: "Header &something&", expected: "header-something"},
+		"drop %":               {in: "Header %something%", expected: "header-something"},
+		"drop ^":               {in: "Header ^something^", expected: "header-something"},
+		"drop *":               {in: "Header *something*", expected: "header-something"},
+		"drop #":               {in: "Header #something#", expected: "header-something"},
+		"drop @":               {in: "Header @something@", expected: "header-something"},
+		"drop |":               {in: "Header |something|", expected: "header-something"},
 	}
 
 	for name, testCase := range testCases {
