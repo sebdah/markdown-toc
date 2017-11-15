@@ -28,6 +28,7 @@ In short the features of `markdown-toc` are:
 
 - [markdown-toc](#markdown-toc)
 - [Table of Contents](#table-of-contents)
+- [Installation](#installation)
 - [Example usage](#example-usage)
   - [Generating a ToC to `stdout`](#generating-a-toc-to-stdout)
   - [Set a custom header](#set-a-custom-header)
@@ -36,6 +37,14 @@ In short the features of `markdown-toc` are:
 - [Helping out!](#helping-out)
 - [License](#license)
 <!-- ToC end -->
+
+# Installation
+
+Currently the easiest way is to clone the repository and run:
+
+    go install
+
+You will end up having a binary called `markdown-toc` in your system afterwards.
 
 # Example usage
 
