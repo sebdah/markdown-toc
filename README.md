@@ -23,6 +23,20 @@ In short the features of `markdown-toc` are:
 
 **Please star the project if you like it!**
 
+<!-- ToC start -->
+# Table of Contents
+
+- [markdown-toc](#markdown-toc)
+- [Example usage](#example-usage)
+  - [Generating a ToC to `stdout`](#generating-a-toc-to-`stdout`)
+  - [Set a custom header](#set-a-custom-header)
+  - [Print the full Markdown file, not only the ToC](#print-the-full-markdown-file,-not-only-the-toc)
+  - [Inject the ToC into a file on disk](#inject-the-toc-into-a-file-on-disk)
+- [Helping out!](#helping-out!)
+- [License](#license)
+<!-- ToC end -->
+
+
 # Example usage
 
 ## Generating a ToC to `stdout`
