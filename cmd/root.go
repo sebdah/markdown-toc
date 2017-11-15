@@ -14,9 +14,22 @@ var (
 	// header is the string injected as a header for the table of contents.
 	header string
 
-	// skipHeader is indicating whether or not a header should be injected in
-	// the table of contents.
-	skipHeader bool
+	// inline indicates whether we should do an inline replacement of the ToC or
+	// if we should print to stdout. Default is to print to stdout.
+	inline bool
+
+	// noHeader is indicating whether or not a header should be injected in the
+	// table of contents.
+	noHeader bool
+
+	// skipHeaders is indicating how many of headers we should skip from the
+	// top. This is useful for projects that has e.g. the project name as the
+	// first header, but they don't want that to go in the ToC.
+	//
+	// The flag is ignoring the header size (H1, H2, etc).
+	//
+	// If this is set to 0 no headers would be skipped.
+	skipHeaders = 0
 
 	// replaceToC is indicating whether we should replace the table of contents
 	// in the input file. This assumes that there are two tags indicating where
@@ -28,10 +41,6 @@ var (
 	// If these tags are not found, the table of contents will be injected on
 	// top all existing content in the markdown file.
 	replaceToC bool
-
-	// inline indicates whether we should do an inline replacement of the ToC or
-	// if we should print to stdout. Default is to print to stdout.
-	inline bool
 )
 
 var RootCmd = &cobra.Command{
@@ -44,7 +53,7 @@ var RootCmd = &cobra.Command{
 			return err
 		}
 
-		t, err := toc.Build(d, header, !skipHeader)
+		t, err := toc.Build(d, header, skipHeaders, !noHeader)
 		if err != nil {
 			return err
 		}
@@ -78,7 +87,8 @@ var RootCmd = &cobra.Command{
 
 func init() {
 	RootCmd.Flags().StringVar(&header, "header", "# Table of Contents", "Text to use for the header for the ToC")
-	RootCmd.Flags().BoolVar(&skipHeader, "skip-header", false, "If this is set there will be no header for the ToC")
+	RootCmd.Flags().BoolVar(&noHeader, "no-header", false, "If this is set there will be no header for the ToC")
+	RootCmd.Flags().IntVar(&skipHeaders, "skip-headers", 0, "Number of headers to skip. Useful if you don't want e.g. the first header to be included in the ToC")
 	RootCmd.Flags().BoolVar(&replaceToC, "replace", false, "If the replace flag is set the full markdown will be returned and any existing ToC replaced")
 	RootCmd.Flags().BoolVar(&inline, "inline", false, "Overwrite the input file with the output from this command. Should be used together with --replace")
 }
