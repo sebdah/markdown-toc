@@ -72,6 +72,16 @@ based on the following rules:
 - If a section starting with `<!-- ToC start -->` and ending with
   `<!-- ToC end -->` is found, it will be replaced with the new ToC.
 
+# Helping out!
+
+There are many ways to help out with this project. Here are a few:
+
+- Answer questions [here](https://github.com/sebdah/markdown-toc/issues)
+- Enhance the documentation
+- Spread the good word on [Twitter](https://twitter.com) or similar places
+- Implement awesome features. Some of the suggested features can be found
+  [here](https://github.com/sebdah/markdown-toc/issues)
+
 # License
 
 MIT license
