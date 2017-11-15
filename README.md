@@ -112,6 +112,24 @@ Output:
     - [License](#license)
     <!-- ToC end -->
 
+## Skip `n` headers
+
+If you do not want to include `n` number of initial headers in your ToC, you can
+use the `--skip-headers=1` flag. This is useful if you have your project name as
+the first header and you don't really want that in the ToC for example.
+
+Command:
+
+    markdown-toc --skip-headers=1 README.md
+
+Output:
+
+    <!-- ToC start -->
+    - [Example usage](#example-usage)
+      - [Generating a ToC to `stdout`](#generating-a-toc-to-`stdout`)
+    - [License](#license)
+    <!-- ToC end -->
+
 ## Print the full Markdown file, not only the ToC
 
     markdown-toc --replace README.md
