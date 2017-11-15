@@ -40,9 +40,24 @@ In short the features of `markdown-toc` are:
 
 # Installation
 
+## Running it in Docker
+
+The project has a Docker image that you can use easily:
+
+    docker run -v $(pwd)":/app" -w /app --rm -it sebdah/markdown-toc README.md
+
+The above will mount your current directory into the Docker container. Just
+modify the `-v` flag according to your needs if you need to modify some other
+folder.
+
+`markdown-toc` is the `ENTRYPOINT` in the `Dockerfile`, which means that it's
+the default command.
+
+## Building it yourself
+
 Currently the easiest way is to clone the repository and run:
 
-    go install
+    make install
 
 You will end up having a binary called `markdown-toc` in your system afterwards.
 
@@ -114,6 +129,19 @@ There are many ways to help out with this project. Here are a few:
 - Spread the good word on [Twitter](https://twitter.com) or similar places
 - Implement awesome features. Some of the suggested features can be found
   [here](https://github.com/sebdah/markdown-toc/issues)
+
+## Running the test suite
+
+    make test
+
+## Build locally with build flags
+
+    make build
+
+# Releasing new versions
+
+From the `master` branch run `make release`. You will need to have access to
+pushing to the GitHub project as well as Docker Hub.
 
 # License
 
