@@ -37,9 +37,6 @@ In short the features of `markdown-toc` are:
 - [License](#license)
 <!-- ToC end -->
 
-
-
-
 # Example usage
 
 ## Generating a ToC to `stdout`

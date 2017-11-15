@@ -20,7 +20,7 @@ func TestBuild(t *testing.T) {
 			expectedToC: []string{
 				"<!-- ToC start -->",
 				"# Table of Contents\n",
-				"<!-- ToC end -->\n",
+				"<!-- ToC end -->",
 			},
 		},
 		"success - full example": {
@@ -62,7 +62,7 @@ Some content
 				"  - [Header 4](#header-4)",
 				"    - [Header 5](#header-5)",
 				"      - [Header 6](#header-6)",
-				"<!-- ToC end -->\n",
+				"<!-- ToC end -->",
 			},
 		},
 	}
