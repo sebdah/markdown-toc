@@ -222,4 +222,3 @@ pushing to the GitHub project as well as Docker Hub.
 # License
 
 MIT license
-

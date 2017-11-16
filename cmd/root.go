@@ -65,7 +65,6 @@ var RootCmd = &cobra.Command{
 
 		if replaceToC {
 			t = toc.Replace(d, t)
-			t = append(t, "\n")
 		}
 
 		if inline {
@@ -79,7 +78,7 @@ var RootCmd = &cobra.Command{
 				return err
 			}
 
-			err = ioutil.WriteFile(args[0], []byte(strings.Join(t, "\n")), i.Mode())
+			err = ioutil.WriteFile(args[0], []byte(fmt.Sprintf("%s\n", strings.Join(t, "\n"))), i.Mode())
 			if err != nil {
 				return err
 			}
