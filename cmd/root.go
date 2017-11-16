@@ -65,6 +65,7 @@ var RootCmd = &cobra.Command{
 
 		if replaceToC {
 			t = toc.Replace(d, t)
+			t = append(t, "\n")
 		}
 
 		if inline {
