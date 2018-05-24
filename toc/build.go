@@ -12,6 +12,7 @@ var (
 	rHashHeader        = regexp.MustCompile("^(?P<indent>#+) ?(?P<title>.+)$")
 	rUnderscoreHeader1 = regexp.MustCompile("^=+$")
 	rUnderscoreHeader2 = regexp.MustCompile("^\\-+$")
+	rCodeblocks        = regexp.MustCompile("^```")
 )
 
 // Build is returning a ToC based on the input markdown.
@@ -65,6 +66,8 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 			}
 
 			appendToC(previousLine, 1)
+		case rCodeblocks.Match(s.Bytes()):
+			toc = append(toc, s.Text())
 		}
 
 		previousLine = s.Text()
@@ -75,5 +78,57 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 
 	toc = append(toc, "<!-- ToC end -->")
 
+	toc = dropCodeblocks(toc)
+
 	return toc, nil
+}
+
+func dropCodeblocks(toc []string) []string {
+
+	var result []string
+
+	var codeStart, codeEnd int
+
+	for i, l := 0, len(toc); i < l; i++ {
+
+		if codeEnd > 0 {
+			i = codeEnd
+			codeEnd = 0
+			continue
+		}
+
+		if rCodeblocks.MatchString(toc[i]) {
+			codeStart = i
+			toc[i] = ""
+
+			for j := codeStart; j < l; j++ {
+
+				if codeEnd > 0 {
+					break
+				}
+
+				if rCodeblocks.MatchString(toc[j]) {
+					codeEnd = j
+					toc[j] = ""
+
+					for k := codeStart; k < codeEnd; k++ {
+						toc[k] = ""
+					}
+				}
+
+			}
+		}
+
+	}
+
+	for _, v := range toc {
+
+		if v != "" {
+			result = append(result, v)
+		}
+
+	}
+
+	return result
+
 }

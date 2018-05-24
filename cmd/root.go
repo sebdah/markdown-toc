@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/sebdah/markdown-toc/toc"
+	"github.com/jinlongplus/markdown-toc/toc"
 	"github.com/spf13/cobra"
 )
 
