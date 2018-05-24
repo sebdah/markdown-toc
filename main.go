@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/jinlongplus/markdown-toc/cmd"
+	"github.com/sebdah/markdown-toc/cmd"
 )
 
 var version = "undefined"
