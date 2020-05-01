@@ -3,6 +3,7 @@ package toc
 import (
 	"bufio"
 	"bytes"
+	"errors"
 	"fmt"
 	"regexp"
 	"strings"
@@ -12,6 +13,7 @@ var (
 	rHashHeader        = regexp.MustCompile("^(?P<indent>#+) ?(?P<title>.+)$")
 	rUnderscoreHeader1 = regexp.MustCompile("^=+$")
 	rUnderscoreHeader2 = regexp.MustCompile("^\\-+$")
+	rCodeblockMarker   = regexp.MustCompile("^```[-a-z]*$")
 )
 
 // Build is returning a ToC based on the input markdown.
@@ -45,8 +47,18 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 		toc = append(toc, fmt.Sprintf("%s1. [%s](#%s)", strings.Repeat("   ", indent), title, link))
 	}
 
+	var inCodeBlock bool
 	s := bufio.NewScanner(bytes.NewReader(d))
 	for s.Scan() {
+		// Handle code blocks first
+		if rCodeblockMarker.Match(s.Bytes()) {
+			inCodeBlock = !inCodeBlock
+		}
+
+		if inCodeBlock {
+			continue
+		}
+
 		switch {
 		case rHashHeader.Match(s.Bytes()):
 			m := rHashHeader.FindStringSubmatch(s.Text())
@@ -71,6 +83,10 @@ func Build(d []byte, header string, depth, skipHeaders int, addHeader bool) ([]s
 	}
 	if err := s.Err(); err != nil {
 		return []string{}, err
+	}
+
+	if inCodeBlock {
+		return []string{}, errors.New("unterminated code block")
 	}
 
 	toc = append(toc, "<!-- ToC end -->")

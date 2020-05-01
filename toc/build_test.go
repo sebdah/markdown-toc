@@ -220,6 +220,22 @@ Some content
 				"<!-- ToC end -->",
 			},
 		},
+		"don't render comments in a code block":
+		{
+			data: []byte("# Header 1\n" +
+				"```python\n" +
+				"# Test comment\n" +
+				"```\n"),
+			header:      "",
+			depth:       0,
+			skipHeaders: 0,
+			addHeader:   false,
+			expectedToC: []string{
+				"<!-- ToC start -->",
+				"1. [Header 1](#header-1)",
+				"<!-- ToC end -->",
+			},
+		},
 	}
 
 	for name, testCase := range testCases {
